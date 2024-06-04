@@ -9,7 +9,7 @@ class BarangController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt.auth', ['except' => ['index']]);
+        $this->middleware('jwt.auth', ['except' => ['index','show']]);
     }
 
     public function index()
