@@ -9,9 +9,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-
         return Barang::all();
-
     }
 
     public function show($id)
@@ -21,14 +19,12 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-
-        $this->validate($request, [
-            'nama_barang' => 'required',
-            'deskripsi' => 'required',
-            'jumlah' => 'required|integer',
-            'gambar' => '',
-        ]);
-        
+        $barang = new Barang;
+        $barang->nama = $request->nama;
+        $barang->deskripsi = $request->deskripsi;
+        $barang->stok = $request->stok;
+        $barang->gambar = $request->gambar;
+        $barang->save();
 
         return response()->json($barang, 201);
     }

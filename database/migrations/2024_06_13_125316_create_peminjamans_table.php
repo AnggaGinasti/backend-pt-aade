@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barang_id')->references('id')->on('barangs')->onDelete('cascade');
+            $table->string('no_hp');
             $table->integer('jumlah');
             $table->string('nama_peminjam');
             $table->string('nama_barang');
