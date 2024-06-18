@@ -24,6 +24,10 @@ class PeminjamanController extends Controller
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|exists:barangs,id',
             'jumlah' => 'required|integer|min:1',
+            'nama_peminjam' => 'required|string',
+            'nama_barang' => 'required|string',
+            'tanggal_dipinjam' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -40,6 +44,10 @@ class PeminjamanController extends Controller
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|exists:barangs,id',
             'jumlah' => 'required|integer|min:1',
+            'nama_peminjam' => 'required|string',
+            'nama_barang' => 'required|string',
+            'tanggal_dipinjam' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         if ($validator->fails()) {

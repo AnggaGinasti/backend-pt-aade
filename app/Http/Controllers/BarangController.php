@@ -21,12 +21,14 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-        $barang = new Barang;
-        $barang->nama = $request->nama;
-        $barang->deskripsi = $request->deskripsi;
-        $barang->stok = $request->stok;
-        $barang->gambar = $request->gambar;
-        $barang->save();
+
+        $this->validate($request, [
+            'nama_barang' => 'required',
+            'deskripsi' => 'required',
+            'jumlah' => 'required|integer',
+            'gambar' => '',
+        ]);
+        
 
         return response()->json($barang, 201);
     }
