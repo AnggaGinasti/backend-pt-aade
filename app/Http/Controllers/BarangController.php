@@ -1,69 +1,55 @@
-<?php 
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class BarangController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('jwt.auth', ['except' => ['index','show']]);
-    }
-
     public function index()
     {
-        return response()->json(Barang::all());
+
+        return Barang::all();
+
+    }
+
+    public function show($id)
+    {
+        return Barang::findOrFail($id);
     }
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'nama_barang' => 'required',
             'deskripsi' => 'required',
             'jumlah' => 'required|integer',
             'gambar' => '',
         ]);
+        
 
-        $barang = Barang::create($request->all());
         return response()->json($barang, 201);
-    }
-
-    public function show($id)
-    {
-        $barang = Barang::find($id);
-        if (!$barang) {
-            return response()->json(['message' => 'Barang not found'], 404);
-        }
-        return response()->json($barang);
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'sometimes|required',
-            'description' => 'sometimes|required',
-            'price' => 'sometimes|required|integer',
-        ]);
+        $barang = Barang::findOrFail($id);
+        $barang->nama = $request->nama;
+        $barang->deskripsi = $request->deskripsi;
+        $barang->stok = $request->stok;
+        $barang->gambar = $request->gambar;
+        $barang->save();
 
-        $barang = Barang::find($id);
-        if (!$barang) {
-            return response()->json(['message' => 'Barang not found'], 404);
-        }
-
-        $barang->update($request->all());
-        return response()->json($barang);
+        return response()->json($barang, 200);
     }
 
     public function destroy($id)
     {
-        $barang = Barang::find($id);
-        if (!$barang) {
-            return response()->json(['message' => 'Barang not found'], 404);
-        }
-
+        $barang = Barang::findOrFail($id);
         $barang->delete();
-        return response()->json(['message' => 'Barang deleted']);
+
+        return response()->json(null, 204);
     }
 }
