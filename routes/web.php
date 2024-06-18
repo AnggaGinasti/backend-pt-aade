@@ -27,4 +27,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->put('/{id}', 'PeminjamanController@update');
         $router->delete('/{id}', 'PeminjamanController@destroy');
     });
+
+    
 });

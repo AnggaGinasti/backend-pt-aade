@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barang_id')->references('id')->on('barangs')->onDelete('cascade');
             $table->integer('jumlah');
+            $table->string('nama_peminjam');
+            $table->string('nama_barang');
+            $table->string('tanggal_dipinjam');
+            $table->string('status');
             $table->timestamps();
         });
     }

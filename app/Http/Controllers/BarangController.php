@@ -20,9 +20,10 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|integer',
+            'nama_barang' => 'required',
+            'deskripsi' => 'required',
+            'jumlah' => 'required|integer',
+            'gambar' => '',
         ]);
 
         $barang = Barang::create($request->all());
