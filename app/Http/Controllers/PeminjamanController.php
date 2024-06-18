@@ -23,6 +23,7 @@ class PeminjamanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|exists:barangs,id',
+            'no_hp' => 'required|string',
             'jumlah' => 'required|integer|min:1',
             'nama_peminjam' => 'required|string',
             'nama_barang' => 'required|string',
@@ -43,6 +44,7 @@ class PeminjamanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|exists:barangs,id',
+            'no_hp' => 'required|string',
             'jumlah' => 'required|integer|min:1',
             'nama_peminjam' => 'required|string',
             'nama_barang' => 'required|string',
