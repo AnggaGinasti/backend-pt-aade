@@ -9,7 +9,9 @@ class BarangController extends Controller
 {
     public function index()
     {
+
         return Barang::all();
+
     }
 
     public function show($id)
