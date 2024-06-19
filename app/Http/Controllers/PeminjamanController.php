@@ -22,7 +22,6 @@ class PeminjamanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'barang_id' => 'required|exists:barangs,id',
             'no_hp' => 'required|string',
             'jumlah' => 'required|integer|min:1',
             'nama_peminjam' => 'required|string',
@@ -43,7 +42,6 @@ class PeminjamanController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'barang_id' => 'required|exists:barangs,id',
             'no_hp' => 'required|string',
             'jumlah' => 'required|integer|min:1',
             'nama_peminjam' => 'required|string',
