@@ -20,7 +20,7 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $barang = new Barang;
-        $barang->nama = $request->nama;
+        $barang->nama_barang = $request->nama_barang;
         $barang->deskripsi = $request->deskripsi;
         $barang->stok = $request->stok;
         $barang->gambar = $request->gambar;
@@ -32,7 +32,7 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $barang = Barang::findOrFail($id);
-        $barang->nama = $request->nama;
+        $barang->nama_barang = $request->nama_barang;
         $barang->deskripsi = $request->deskripsi;
         $barang->stok = $request->stok;
         $barang->gambar = $request->gambar;
